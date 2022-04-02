@@ -1,0 +1,6 @@
+.error-cat {
+    border-radius: 50%;
+    display: flex;
+    margin: auto;
+    height: 25rem;
+}

@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+}
+.header {
+    display: block;
+    flex-direction: row;
+}
+.basket {
+    display: block;
+    margin-left: 20rem;
+    flex-direction: row;
+}
