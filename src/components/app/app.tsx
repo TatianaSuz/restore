@@ -1,51 +1,20 @@
-import {VFC} from "react";
-import Spinner from "../spinner/spinner";
-import ErrorIndicator from "../error-indicator/error-indicator";
-import './app.css'
-import Header from "../header/header";
+import { VFC } from 'react';
+import Spinner from '../spinner/spinner';
+import ErrorIndicator from '../error-indicator/error-indicator';
+import './app.css';
+import Header from '../header/header';
+import ErrorBoundary from '../error-boundary/error-boundary';
+import { Route, Switch } from 'react-router-dom';
+import HomePage from '../pages/home-page';
+import CartPage from '../pages/cart-page';
 
 const App: VFC = () => {
   return (
-    <div className='tablet'>
-      <Header/>
-      <Spinner/>
-      <ErrorIndicator/>
-      <div>
-        <ul>
-          <li>Book 1</li>
-          <li>Book 2</li>
-          <li>Book 3</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Your Order</h2>
-        <table>
-          <tr>
-            <td>
-              <th>#</th>
-            </td>
-            <td>
-              <th>Item</th>
-            </td>
-            <td>Count</td>
-            <td>Price</td>
-            <td>Action</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-        </table>
-      </div>
+    <Switch>
+      <Route path="/" component={HomePage} exact />
+      <Route path="/cart" component={CartPage} />
+    </Switch>
+  );
+};
 
-    </div>
-  )
-}
-
-export default App
+export default App;

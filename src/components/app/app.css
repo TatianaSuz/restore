@@ -6,3 +6,7 @@ body {
     padding: 3rem;
     display: block;
 }
+
+.load-spinner{
+    display: flex;
+}
