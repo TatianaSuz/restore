@@ -29,6 +29,7 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     '@typescript-eslint/explicit-function-return-type': 'warn',
     'no-plusplus': 'off',
+    'react/prop-types': 'off',
     'import/no-mutable-exports': 'off',
     'no-alert': 'off',
     'no-param-reassign': [

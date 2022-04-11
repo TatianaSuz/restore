@@ -3,18 +3,15 @@
 import { AppActionTypes } from '../actions/action-types/action-types';
 import { Book } from '../../components/book-list-item/book-list-item';
 
-type BooksLoadedAction = { type: 'BOOKS_LOADED'; payload: Book[] };
-type Action = BooksLoadedAction;
-
-type State = {
+export type AppState = {
   books: Book[];
 };
 
-const initialState: State = {
+const initialState: AppState = {
   books: [],
 };
 
-const appReducer = (state: State = initialState, action: AppActionTypes): State => {
+const appReducer = (state: AppState = initialState, action: AppActionTypes): AppState => {
   switch (action.type) {
     case 'BOOKS_LOADED':
       return { ...state, books: action.payload };

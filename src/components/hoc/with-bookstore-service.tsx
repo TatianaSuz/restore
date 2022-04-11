@@ -1,7 +1,8 @@
 import { BookstoreServiceConsumer } from '../bookstore-service-context/bookstore-service-context';
 import { FC } from 'react';
+import BookstoreService from '../../services/bookstore-service';
 
-type WrappedProps = { bookstoreService: Function };
+type WrappedProps = { bookstoreService: BookstoreService };
 
 const WithBookstoreService = () => (Wrapped: FC<WrappedProps>) => {
   return (props: {}) => {

@@ -1,0 +1,31 @@
+.book-list-item {
+    display: flex;
+    margin-bottom: 2rem;
+
+}
+
+.book-cover img {
+    width: 220px;
+}
+
+.book-details {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-add-to-cart {
+    background-color: #e4b9ab;
+    border: none;
+    box-shadow: 2px 2px 2px #c89e8f;
+    padding: 0.5rem;
+    border-radius: 30px;
+    width: 150px;
+    font-size: 22px;
+    outline: none;
+}
+
+a, .book-author, .book-price {
+    margin-bottom: 1rem;
+}
+
