@@ -1,0 +1,60 @@
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    padding-right: 40px;
+}
+
+thead {
+    border-bottom: 1px solid #cba198;
+    border-top: 1px solid #cba198;
+}
+
+.table-item {
+    width: 50%;
+}
+
+.table-count {
+    text-align: center;
+}
+
+.table-price {
+    text-align: center;
+}
+
+th {
+    text-align: start;
+    padding: 15px;
+}
+
+td {
+    padding: 15px;
+}
+
+.item-number {
+    text-align: start;
+    width: 5%;
+}
+
+.table-action {
+    width: 60px;
+}
+
+.action-buttons {
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button {
+    border: none;
+    color: #553d36;
+    background-color: #f0d9d2;
+    font-size: 30px;
+}
+
+.total {
+    font-size: 32px;
+    font-weight: 500;
+    margin-right: 5rem;
+    text-align: right;
+}

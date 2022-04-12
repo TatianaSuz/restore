@@ -32,7 +32,7 @@
     display: inline-block;
     overflow: hidden;
     background: none;
-    margin: 0 auto
+    margin: 0 auto;
 }
 .ldio-e7yh8qjwlba {
     width: 100%;
@@ -43,3 +43,8 @@
     transform-origin: 0 0; /* see note above */
 }
 .ldio-e7yh8qjwlba div { box-sizing: content-box; }
+
+.spinner-center{
+    display: flex;
+    align-items: center;
+}

@@ -1,7 +1,7 @@
 .book-list-item {
     display: flex;
     margin-bottom: 2rem;
-
+    padding-left: 0;
 }
 
 .book-cover img {
@@ -25,7 +25,10 @@
     outline: none;
 }
 
-a, .book-author, .book-price {
+span, .book-author, .book-price {
     margin-bottom: 1rem;
+}
+.book-title:hover {
+color: #491212;
 }
 

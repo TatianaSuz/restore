@@ -1,24 +1,38 @@
 .header {
     display: flex;
-    padding: 15px;
+    flex-direction: row;
+    padding: 15px 25px 15px 15px;
     align-items: center;
-}
-
-a {
-    text-decoration: none;
-    color: #553d36;
-    font-size: 32px;
+    margin-bottom: 2rem;
 }
 
 .site-name {
+    color: #553d36;
+    text-decoration: none;
     margin-right: auto;
     font-size: 40px;
     font-weight: bold;
+    margin-bottom: 0;
 }
 
+.site-name:hover {
+    color: #491212;
+}
 
 .basket {
     width: 50px;
     height: 50px;
+}
 
+.basket-cart {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    color: #553d36;
+    text-decoration: none;
+    margin: 0;
+}
+
+.basket-info {
+    margin: 0;
 }

@@ -3,8 +3,12 @@ body {
     font-family: 'Prompt', sans-serif;
     color: #553d36;
     font-size: 24px;
-    padding: 3rem;
+    padding: 3rem 2rem;
     display: block;
+    width: 95%;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .load-spinner{

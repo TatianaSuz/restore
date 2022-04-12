@@ -12,9 +12,7 @@ const BookListItem: VFC<Props> = ({ book }) => {
         <img src={coverImage} alt="Book cover" />
       </div>
       <div className="book-details">
-        <a className="book-title" href="#">
-          {title}
-        </a>
+        <span className="book-title">{title}</span>
         <div className="book-author">{author}</div>
         <div className="book-price">${price}</div>
         <button type="button" className="btn-add-to-cart">
