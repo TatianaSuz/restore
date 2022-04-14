@@ -22,8 +22,8 @@ const Header: VFC<Props> = ({ numItems, total }) => (
 );
 
 const mapStateToProps = (state: RootState) => {
-  const items = state.shoppingList.cartItems;
-  const numItems = items.length || items.reduce((a, v) => a + v, 0);
+  const items: number[] = state.shoppingList.cartItems.map((item) => item.count);
+  const numItems = items.length ? items.reduce((a, v) => a + v, 0) : 0;
   return {
     total: state.shoppingList.orderTotal,
     numItems,
