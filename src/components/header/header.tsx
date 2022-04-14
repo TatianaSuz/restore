@@ -2,22 +2,31 @@ import { VFC } from 'react';
 import './header.css';
 import icon from '../../static/img/premium-icon-baskets-2404124.png';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { RootState } from '../../store/store';
 
 type Props = { numItems: number; total: number };
 
-const Header: VFC<Props> = ({ numItems, total }) => {
-  return (
-    <div className="header">
-      <Link to="/" className="site-name">
-        <div className="site-name">ReStore</div>
-      </Link>
-      <Link to="/cart" className="basket-cart">
-        <img src={icon} className="basket" alt="basket" />
-        <span className="basket-info">
-          {numItems} items ${total}
-        </span>
-      </Link>
+const Header: VFC<Props> = ({ numItems, total }) => (
+  <div className="header">
+    <Link to="/" className="site-name">
+      <div className="site-name">ReStore</div>
+    </Link>
+    <div className="basket-cart">
+      <img src={icon} className="basket" alt="basket" />
+      <span className="basket-info">
+        {numItems} items ${total}
+      </span>
     </div>
-  );
+  </div>
+);
+
+const mapStateToProps = (state: RootState) => {
+  const items = state.shoppingList.cartItems;
+  const numItems = items.length || items.reduce((a, v) => a + v, 0);
+  return {
+    total: state.shoppingList.orderTotal,
+    numItems,
+  };
 };
-export default Header;
+export default connect(mapStateToProps)(Header);

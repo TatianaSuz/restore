@@ -2,10 +2,10 @@ import React, { VFC } from 'react';
 import './book-list-item.css';
 
 export type Book = { id: number; title: string; author: string; price: number; coverImage: string };
-type Props = { book: Book };
+type Props = { book: Book; onAddedToCart: (id: number) => void };
 
-const BookListItem: VFC<Props> = ({ book }) => {
-  const { title, author, price, coverImage } = book;
+const BookListItem: VFC<Props> = ({ book, onAddedToCart }) => {
+  const { title, author, price, coverImage, id } = book;
   return (
     <div className="book-list-item">
       <div className="book-cover">
@@ -15,7 +15,12 @@ const BookListItem: VFC<Props> = ({ book }) => {
         <span className="book-title">{title}</span>
         <div className="book-author">{author}</div>
         <div className="book-price">${price}</div>
-        <button type="button" className="btn-add-to-cart">
+        <button
+          type="button"
+          className="btn-add-to-cart"
+          onClick={() => {
+            onAddedToCart(id);
+          }}>
           Add to cart
         </button>
       </div>

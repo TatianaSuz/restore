@@ -1,38 +1,41 @@
 import { Book } from '../../components/book-list-item/book-list-item';
-import {
-  FETCH_BOOK_REQUEST,
-  FETCH_BOOKS_SUCCESS,
-  FETCH_BOOK_FAILURE,
-} from '../actions/action-types/constants';
-
-type BooksLoadedAction = { type: 'FETCH_BOOKS_SUCCESS'; payload: Book[] };
-type BooksRequestedAction = { type: 'FETCH_BOOK_REQUEST' };
-type BooksErrorAction = { type: 'FETCH_BOOK_FAILURE'; payload: Error };
-type Action = BooksLoadedAction | BooksRequestedAction | BooksErrorAction;
+import { Item } from '../../components/shopping-cart-table/shopping-cart-table';
+import { AppActionTypes } from '../actions/action-types/action-types';
+import updateShoppingList from './shopping-cart';
+import updateBookList from './book-list';
+import { Reducer } from 'redux';
 
 export type AppState = {
-  books: Book[];
-  loading: boolean;
-  error: null | Error;
+  bookList: {
+    books: Book[];
+    loading: boolean;
+    error: null | Error;
+  };
+  shoppingList: { cartItems: Item[]; orderTotal: number };
 };
 
 const initialState: AppState = {
-  books: [],
-  loading: true,
-  error: null,
+  bookList: {
+    books: [],
+    loading: true,
+    error: null,
+  },
+  shoppingList: {
+    cartItems: [],
+    orderTotal: 0,
+  },
 };
 
-const appReducer = (state: AppState = initialState, action: Action): AppState => {
-  switch (action.type) {
-    case FETCH_BOOK_REQUEST:
-      return { books: [], loading: true, error: null };
-    case FETCH_BOOKS_SUCCESS:
-      return { books: action.payload, loading: false, error: null };
-    case FETCH_BOOK_FAILURE:
-      return { books: [], loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
+type AppReducer = Reducer<AppState, AppActionTypes>;
+
+export type HandleReducerPart<T extends keyof AppState> = (
+  state: AppState,
+  action: AppActionTypes,
+) => AppState[T];
+
+const appReducer: AppReducer = (state = initialState, action) => ({
+  bookList: updateBookList(state, action),
+  shoppingList: updateShoppingList(state, action),
+});
 
 export default appReducer;

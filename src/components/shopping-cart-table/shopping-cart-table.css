@@ -53,8 +53,9 @@ button {
 }
 
 .total {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 500;
-    margin-right: 5rem;
+    margin-right:25px;
+    margin-top: 25px;
     text-align: right;
 }

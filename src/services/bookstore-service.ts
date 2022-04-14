@@ -21,13 +21,9 @@ class BookstoreService {
   ];
 
   getBooks(): Promise<Books> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
-        if (Math.random() > 0.75) {
-          reject(new Error('Bad'));
-        } else {
-          resolve(this.data);
-        }
+        resolve(this.data);
       }, 1000);
     });
   }

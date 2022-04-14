@@ -2,6 +2,7 @@
     display: flex;
     margin-bottom: 2rem;
     padding-left: 0;
+    max-width: 505px;
 }
 
 .book-cover img {
@@ -20,9 +21,13 @@
     box-shadow: 2px 2px 2px #c89e8f;
     padding: 0.5rem;
     border-radius: 30px;
-    width: 150px;
+    max-width: 150px;
     font-size: 22px;
     outline: none;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #e6b39e;
 }
 
 span, .book-author, .book-price {
@@ -32,3 +37,32 @@ span, .book-author, .book-price {
 color: #491212;
 }
 
+@media (max-width: 576px) {
+    .site-name {
+        font-size: 30px;
+    }
+    .basket {
+        width: 30px;
+        height: 30px;
+    }
+    tr th, tr td {
+        padding: 8px;
+    }
+    body {
+        font-size: 18px;
+        padding: 10px;
+    }
+    .book-cover img {
+        max-width: 150px;
+    }
+    .book-details {
+        min-width: 130px;
+        max-width: 130px;
+    }
+    .btn-add-to-cart {
+        font-size: 18px;
+    }
+    .shopping-cart-table {
+        overflow-x: scroll;
+    }
+}

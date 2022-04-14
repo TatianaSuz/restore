@@ -4,9 +4,9 @@ import BookstoreService from '../../services/bookstore-service';
 
 type WrappedProps = { bookstoreService: BookstoreService };
 
-const WithBookstoreService = () => (Wrapped: FC<WrappedProps>) => {
-  return (props: {}) => {
-    return (
+const WithBookstoreService =
+  () => (Wrapped: FC<WrappedProps>) => (props: Record<string, unknown>) =>
+    (
       <BookstoreServiceConsumer>
         {(bookstoreService) => {
           if (bookstoreService !== null) {
@@ -15,7 +15,5 @@ const WithBookstoreService = () => (Wrapped: FC<WrappedProps>) => {
         }}
       </BookstoreServiceConsumer>
     );
-  };
-};
 
 export default WithBookstoreService;

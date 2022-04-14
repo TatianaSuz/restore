@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import WithBookstoreService from '../hoc/with-bookstore-service';
 import BookstoreService from '../../services/bookstore-service';
-import fetchBooks from '../../store/actions/action-creators/app-creators';
+import { bookAddedToCart } from '../../store/actions/action-creators/app-creators';
 import compose from '../../utils/compose';
 import Spinner from '../spinner/spinner';
 import ErrorIndicator from '../error-indicator/error-indicator';
+import { fetchBooks } from '../../store/actions/action-creators/async-actions';
 
 export type Books = Book[];
-export type Props = {
+type Props = {
   bookstoreService: BookstoreService;
   books: Books;
   booksLoaded: (newBooks: Books) => void;
@@ -20,19 +21,21 @@ export type Props = {
   fetchBooks: () => void;
   loading: boolean;
   error: null | Error;
+  onAddedToCart: (id: number) => void;
 };
 
-const BookList: VFC<{ books: Books }> = ({ books }) => (
-  <ul className="book-list">
+const BookList: VFC<{ books: Books; onAddedToCart: (id: number) => void }> = ({
+  books,
+  onAddedToCart,
+}) => (
+  <div className="book-list">
     {books.map((book) => (
-      <li key={book.id}>
-        <BookListItem book={book} />
-      </li>
+      <BookListItem key={book.id} book={book} onAddedToCart={() => onAddedToCart(book.id)} />
     ))}
-  </ul>
+  </div>
 );
 
-const BookListContainer: VFC<Props> = ({ books, fetchBooks, loading, error }) => {
+const BookListContainer: VFC<Props> = ({ books, fetchBooks, loading, error, onAddedToCart }) => {
   useEffect(() => fetchBooks(), []);
 
   if (loading) {
@@ -42,19 +45,19 @@ const BookListContainer: VFC<Props> = ({ books, fetchBooks, loading, error }) =>
   if (error) {
     return <ErrorIndicator />;
   }
-  return <BookList books={books} />;
+  return <BookList books={books} onAddedToCart={onAddedToCart} />;
 };
 
 const mapStateToProps = (state: RootState) => ({
-  books: state.app.books,
-  loading: state.app.loading,
-  error: state.app.error,
+  books: state.bookList.books,
+  loading: state.bookList.loading,
+  error: state.bookList.error,
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch, ownProps: Props) => ({
   fetchBooks: fetchBooks(ownProps.bookstoreService, dispatch),
+  onAddedToCart: (id: number) => dispatch(bookAddedToCart(id)),
 });
-
 export default compose(
   WithBookstoreService(),
   connect(mapStateToProps, mapDispatchToProps),
