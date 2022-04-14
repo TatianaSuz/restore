@@ -46,7 +46,7 @@ module.exports = {
     'react/no-array-index-key': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
+    'react/function-component-definition': 'off',
     'jsx-a11y/no-autofocus': 'warn',
     'jsx-a11y/anchor-has-content': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
